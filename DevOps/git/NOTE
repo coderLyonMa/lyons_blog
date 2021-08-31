@@ -1,0 +1,16 @@
+Q： 如何指定git push使用ssh协议而不是https与远程仓库同步
+
+A：修改.ssh/config中的 remote orign 行
+url = git@github.com:${username}/${project_name}.git
+原先的https行可能需要移除
+
+亲测：如果不移除https行，会进行2次验证（第二次会失败，因为github已经禁用了https）
+
+Q：git config user.email 会发生什么？
+A：该信息会被写入.git/config。如：
+[user]
+        email = user@email.com
+这个信息会被用于标记commit author等用途
+
+Q：如果希望git push使用ssh协议而不是https与远程仓库同步，如何指定ssh key？
+A：git将会使用默认的ssh 密钥对。
